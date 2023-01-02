@@ -1,0 +1,12 @@
+
+DEBUG = True 
+
+# SQLALCHEMY_DATABASE_URI = 'sqlite:///dnaempresarial.sqlite3'
+
+# SQLALCHEMY_TRACK_MODIFICATIONS = True
+
+SECRET_KEY= "192b9bdd22ab9ed4d12e236c78afcb9a393ec15f71bbf5dc987d54727823bcbf"
+
+# JSON_AS_ASCII = False
+
+# JSON_SORT_KEYS = False

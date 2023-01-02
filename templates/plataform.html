@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>DNA Empresarial</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/material-kit.css') }}" rel="stylesheet" />
+
+    <style>
+        .cnae {
+            border-radius: 18px;
+            background-color: #f1efef;
+            color: #787777;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+
+<body style="background-color: #e5e5e5">
+    <!--componente de alert-->
+    <div class="mensagens">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul id="messages" class="list-unstyled">
+            {% for message in messages %}
+            <li class="alert alert-warning">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+    <!-- Navbar Transparent -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white z-index-3 py-3">
+        <div class="container">
+            <a class="navbar-brand  text-white " href="/" rel="tooltip" title="Designed and Coded by Creative Tim"
+                data-placement="bottom">
+                <img src="/static/img/dna-empresarial-logo.png" alt="main_logo">
+                <!--class="mb-3 footer-logo"-->
+            </a>
+            <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon mt-2">
+                    <span class="navbar-toggler-bar bar1"></span>
+                    <span class="navbar-toggler-bar bar2"></span>
+                    <span class="navbar-toggler-bar bar3"></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0 ms-lg-12 ps-lg-5" id="navigation">
+                <ul class="navbar-nav navbar-nav-hover ms-auto text-center">
+                    <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-4">
+                        <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Contato
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-4">
+                        <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Soluções
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-4">
+                        <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages2"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Sobre
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item ms-lg-auto my-auto ms-3 ms-lg- mt-2 mt-lg-0">
+                        <a href="/logout" class="btn btn-sm  bg-gradient-dark mb-0 me-1 mt-2 mt-md-0">Sair</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+<body>
+    <div class="page-header-login" style="height: 1200px; width: 100%;">
+        <!-- <span class="mask bg-gradient-dark opacity-6"
+            style="background-image: linear-gradient(195deg, #000000 0%, #101dd5 100%)"></span> -->
+        <div style="display: flex; flex-direction: row;">
+            <div style="height: 1200px; padding-top: 0.1rem; padding-bottom: 0.07rem; display: flex;">
+                <ul class="navbar-plataform">
+                    <li class="item-plataform">
+                        <a class="link-item-navbar-plataform" href="#" class="active">
+
+                             <span class="item-text-navbar"> <i class="material-icons">view_timeline</i> Pesquisa de Empresas</span>
+                        </a>
+                    </li>
+                    <li class="item-plataform"><a class="link-item-navbar-plataform" href="#">
+
+                        <span class="item-text-navbar"><i class="material-icons">system_update_alt</i> Arquivos</span>
+                        </a>
+                    </li>
+                    <li class="item-plataform"><a class="link-item-navbar-plataform" href="#">
+
+                        <span class="item-text-navbar"> <i class="material-icons">settings</i> Configurações</span>
+                        </a>
+                    </li>
+                    <li class="item-plataform"><a class="link-item-navbar-plataform" href="#">
+                        <span class="item-text-navbar"> <i class="material-icons">group</i> Dados da Conta</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div style="display: flex; flex-direction: column; ">
+                <div style="color: white; display: flex;">
+                    <h3 style="text-align: center;" >Funcionalidades da plataforma</h3>
+                </div>
+                <div style="display: flex;">
+                    <h3>opa</h3>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+    <!--style="background-image: url('https://images.unsplash.com/photo-1630752708689-02c8636b9141?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2490&q=80')"-->
+
+
+
+    <footer class="footer pt-5 " style="background-color: black;margin-top: 0px;">
+        <div class="container" style="color: white;">
+            <div class=" row">
+                <div class="col-md-3 mb-4 ms-auto">
+                    <div class="text-white">
+                        <a href="">
+                            <img src="/static/img/dna-empresarial-logo.png" alt="main_logo">
+                        </a>
+                    </div>
+                    <div>
+                        <ul class="d-flex flex-row ms-n3 nav">
+                            <li class="nav-item">
+                                <a class="nav-link pe-1" href="https://www.facebook.com/CreativeTim/" target="_blank">
+                                    <i class="fab fa-facebook text-lg opacity-8"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pe-1" href="https://twitter.com/creativetim" target="_blank">
+                                    <i class="fab fa-twitter text-lg opacity-8"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pe-1" href="https://dribbble.com/creativetim" target="_blank">
+                                    <i class="fab fa-dribbble text-lg opacity-8"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pe-1" href="https://github.com/creativetimofficial" target="_blank">
+                                    <i class="fab fa-github text-lg opacity-8"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link pe-1" href="https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w"
+                                    target="_blank">
+                                    <i class="fab fa-youtube text-lg opacity-8"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6 col-6 mb-4">
+                    <div>
+                        <h6 class="text-sm text-white">Explorar</h6>
+                        <ul class="flex-column ms-n3 nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="https://www.creative-tim.com/presentation"
+                                    target="_blank">
+                                    Sobre
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="https://www.creative-tim.com/templates/free"
+                                    target="_blank">
+                                    Soluções
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="https://www.creative-tim.com/templates/premium"
+                                    target="_blank">
+                                    Contato
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6 col-6 mb-4">
+                    <div>
+                        <h6 class="text-sm text-white">Contato</h6>
+                        <ul class="flex-column ms-n3 nav">
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="https://iradesign.io/" target="_blank">
+                                    contato@dnaempresarial.digital
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="https://www.creative-tim.com/bits" target="_blank">
+                                    (31) 9 9410-1533
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6 col-6 mb-4"></div>
+                <!-- <div class="col-md-2 col-sm-6 col-6 mb-4"></div>  -->
+                <div class="col-12">
+                    <div class="text-center">
+                        <p class="text-white my-4 text-sm font-weight-normal">
+                            All rights reserved. Copyright ©
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Lógica da página-->
+    <script src="../static/js/functions-index.js"></script>
+    <!--   Core JS Files   -->
+    <script src="../static/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="../static/js/core/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../static/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="../static/js/plugins/countup.min.js"></script>
+    <script src="../static/js/plugins/parallax.min.js"></script>
+
+    <script src="../static/js/jquery.slim.min.js"></script>
+    <script src="../static/js/brmap.js"></script>
+
+    <script>
+        function makeSearch() {
+            document.getElementById("lista-by-cnpj").style.display = null;
+        }
+
+        function makeSearch2() {
+            document.getElementById("lista-by-filter").style.display = null;
+        }
+    </script>
+
+    <script type="text/javascript">
+        !function (a) { a.fn.percentageLoader = function (b) { this.each(function () { function q() { p.customAttributes.arc = function (a, b, c) { var h, d = 360 / b * a, e = (90 - d) * Math.PI / 180, f = j + c * Math.cos(e), g = k - c * Math.sin(e); return h = b == a ? [["M", j, k - c], ["A", c, c, 0, 1, 1, j - .01, k - c]] : [["M", j, k - c], ["A", c, c, 0, +(d > 180), 1, f, g]], { path: h } }, p.path().attr({ arc: [100, 100, l], "stroke-width": d.strokeWidth, stroke: d.bgColor }), e && (m = p.path().attr({ arc: [.01, 100, l], "stroke-width": d.strokeWidth, stroke: d.ringColor, cursor: "pointer" }), r(e, 100, l, m, 2)), n = p.text(j, k, e + "%").attr({ font: d.fontWeight + " " + d.fontSize + " Arial", fill: d.textColor }) } function r(a, b, c, d) { f ? d.animate({ arc: [a, b, c] }, 900, ">") : a && a != b ? d.animate({ arc: [a, b, c] }, 750, "elastic") : (a = b, d.animate({ arc: [a, b, c] }, 750, "bounce", function () { d.attr({ arc: [0, b, c] }) })) } var c = a(this), d = a.extend({}, a.fn.percentageLoader.defaultConfig, b), e = parseInt(c.children(d.valElement).text()), f = !0, h = parseInt(c.css("width")), i = parseInt(c.css("height")), j = h / 2, k = i / 2, l = j - d.strokeWidth / 2, m = null, n = null, p = Raphael(this, h, i); q() }) }, a.fn.percentageLoader.defaultConfig = { valElement: "p", strokeWidth: 20, bgColor: "#d9d9d9", ringColor: "#d53f3f", textColor: "#9a9a9a", fontSize: "12px", fontWeight: "normal" } }(jQuery);
+    </script>
+
+    <script type="text/javascript">
+
+        $('.p1').percentageLoader({
+            bgColor: '#E5E5E5',
+            ringColor: '#396DA6',
+            textColor: 'black',
+            fontSize: '28px',
+            fontWeight: '700',
+            strokeWidth: 20
+        });
+
+        $('.p2').percentageLoader({
+            bgColor: '#E5E5E5',
+            ringColor: '#DA2F2A',
+            textColor: 'black',
+            fontSize: '28px',
+            fontWeight: '700',
+            strokeWidth: 20
+        });
+
+        $('.p3').percentageLoader({
+            bgColor: '#E5E5E5',
+            ringColor: '#905029',
+            textColor: 'black',
+            fontSize: '28px',
+            fontWeight: '700',
+            strokeWidth: 20
+        });
+
+        $('.p4').percentageLoader({
+            bgColor: '#E5E5E5',
+            ringColor: '#FBBD00',
+            textColor: 'black',
+            fontSize: '28px',
+            fontWeight: '700',
+            strokeWidth: 20
+        });
+
+
+        $('.p5').percentageLoader({
+            bgColor: '#E5E5E5',
+            ringColor: '#60A850',
+            textColor: 'black',
+            fontSize: '28px',
+            fontWeight: '700',
+            strokeWidth: 20
+        });
+    </script><i title="Raphaël Colour Picker" style="display: none; color: black;"></i>
+
+    <script>
+        BrMap.Draw({
+            wrapper: '#estados',
+            selectStates: [''],
+            callbacks: {
+                click: (element, uf) => { mapActive(uf) },
+            }
+        });
+    </script>
+
+    <script>
+        function mapActive(uf) {
+            switch (uf) {
+                case 'AC':
+                    selectEstado("ac", "48.812", "1.999.321", "343.333", "9.877")
+                    break
+                case 'AL':
+                    selectEstado("al", "48.812", "1.999.321", "343.333", "9.877")
+                    break
+
+
+                // GLOBAL
+                default:
+                    selectEstado(null, "31.599.019", "11.030.307", "5.924.953", "2.114.004")
+                    break
+
+            }
+        }
+    </script>
+
+    <script>
+        function selectEstado(uf, presente, mei, micro, demais) {
+            $("#map-presentes").text(presente)
+            $("#uf-span").text(uf.toUpperCase())
+            $("#map-mei").text(mei)
+            $("#map-micro").text(micro)
+            $("#map-demais").text(demais)
+            BrMap.Draw({ selectStates: ['%d', uf] });
+        }
+    </script>
+    <script>
+        var pagina = 0
+
+        async function findData(page) {
+            var size = 10;
+            pagina += page;
+            var response = await fetch("http://localhost:5000/empresas?page=" + pagina + "&size=10");
+            var data = await response.json();
+
+            var linha = ''
+            data.forEach(element => {
+                linha += `<tr>
+                  <td>
+                    <div class="d-flex px-2 py-1">
+                      <div>
+                        <img src="/static/img/icone-loja.png" alt="main_logo" width="60px" height="60px">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-xs"> ${element.nome_fantasia} </h6>
+                        <p class="text-xs text-secondary mb-0">${element.cnpj_full}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="text-xs font-weight-bold mb-0">${element.cep}</p>
+                    <p class="text-xs text-secondary mb-0">${element.tipo_logradouro} ${element.nome_logradouro}, ${element.nro_logradouro} ${element.comp_logradouro}</p>
+                    <p class="text-xs text-secondary mb-0">${element.municipio.descricao}, ${element.municipio.uf}</p>
+                  </td>
+                  <td class="align-middle text-center text-sm">
+                    <p class="text-xs font-weight-bold mb-0">${element.cnae_principal.descricao}</p>
+                    <p class="text-xs text-secondary mb-0">G-4645-1/03</p>
+                  </td>
+                  <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-normal">R$ 1.200,000</span>
+                  </td>
+                  <td class="align-middle">
+                    <a href="javascript:;" class="text-secondary font-weight-normal text-xs" data-toggle="tooltip"
+                      data-original-title="Edit user">
+                      Ver detalhes
+                    </a>
+                  </td>
+                </tr>`;
+                document.getElementById("busca_cnpj").innerHTML = linha;
+            });
+
+            document.getElementById("lista-by-cnpj").style.display = "block";
+        }
+
+
+    </script>
+
+    <!--  Google Maps Plugin    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
+    <script src="../static/js/material-kit.min.js" type="text/javascript"></script>
+
+</body>
+
+</html>
