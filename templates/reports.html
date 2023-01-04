@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-    <title>login</title>
+    <title>In Group</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -37,13 +38,11 @@
         {% endif %}
         {% endwith %}
     </div>
-    <!-- Navbar Transparent -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white z-index-3 py-3">
         <div class="container">
             <a class="navbar-brand  text-white " href="/" rel="tooltip" title="Designed and Coded by Creative Tim"
                 data-placement="bottom">
                 <img src="/static/img/in-groups-icon-logo.png" alt="main_logo" width="70px" height="70px">
-                <!--class="mb-3 footer-logo"-->
             </a>
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
@@ -62,173 +61,81 @@
                             Contato
                         </a>
                     </li>
+
                     <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-4">
                         <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages2"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Soluções
                         </a>
                     </li>
+
                     <li class="nav-item dropdown dropdown-hover mx-2 ms-lg-4">
                         <a class="nav-link ps-2 d-flex cursor-pointer align-items-center" id="dropdownMenuPages2"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Sobre
                         </a>
                     </li>
+
+
                     <li class="nav-item ms-lg-auto my-auto ms-3 ms-lg- mt-2 mt-lg-0">
-                        <a href="/registration-user"
-                            class="btn btn-sm  bg-gradient-info mb-0 me-1 mt-2 mt-md-0">Cadastre-se</a>
+                        <a href="/logout" class="btn btn-sm  bg-gradient-dark mb-0 me-1 mt-2 mt-md-0">Sair</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    <!-- End Navbar -->
 
-    <div class="page-header-login" style="height: 600px;">
-        <div class="container">
-            <div class="row">
-                <!-- <div class="col-md-4 mx-auto">
-                    <img src="/static/img/folder2.png" alt="second-logo" width="555px" />
-                </div> -->
-                <div class="col-md-8 mx-auto" style="margin-top: 80px;">
-                    <div class="text-left">
-                        <div>
-                            <div style="color: white;">
-                                <h3 class="d-flex justify-content-center mb-3">Acesse sua conta</h3>
-                            </div>
-                            <center>
-                                <div class="p-3 bg-light" style="width: 90%;">
-                                    <form action="/auth" method="post">
-                                        <div class="column">
-                                            <div>
-                                                <div class="col-md-12">
-                                                    <div class="input-group input-group-outline is-valid my-3">
-                                                        <label class="form-label">E-mail</label>
-                                                        <input type="email" name="email" class="form-control" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="input-group input-group-outline is-valid my-3">
-                                                        <label class="form-label">Senha</label>
-                                                        <input type="password" name="password" class="form-control"
-                                                            required>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-success" style="width: 100%;">Entrar</button>
-                                        <button type="button" class="btn btn-info" style="width: 100%;"><a href="/" style="color: #fff;">Recuperar senha</a> </button>
-                                    </form>
-                                </div>
-                            </center>
-                        </div>
-                    </div>
-                </div>
+    <div class="page-header-login">
 
+        <div style="max-width: 300px; margin: auto; justify-items: center;"> <!--If to mobile-->
+            <div style="padding: 0.5rem; display: block;">
+                <span ><strong>Dener Matos</strong></span>
+                <span>(Pastor de Células)</span>
+                
             </div>
+            <div class="card" data-animation="true" style="background-color: rgb(255, 255, 255);" >
+                <div class="card-body text-center">
+                    <h5 class="font-weight-normal mt-3">
+                        <a href="#;"><strong style="color: rgb(0, 0, 0);">03/01/2023</strong> <i class="material-icons" style="margin: 0; width: 1rem; color: rgb(0, 255, 0);">check_cicle</i> </a>
+                    </h5>
+                    <span class="mb-0" style="color: rgb(0, 0, 0); font-size: small;"> Membros: 7 | Visitantes: 5 | Ofertas: 35,00
+                </span>
+                </div>
+            </div>
+            <br>
+
+            <div class="card" data-animation="true" style="background-color: rgb(255, 255, 255);" >
+                <div class="card-body text-center">
+                    <h5 class="font-weight-normal mt-3">
+                        <a href="#;"><strong style="color: rgb(0, 0, 0);">28/12/2022</strong> <i class="material-icons" style="margin: 0; width: 1rem; color: rgb(0, 255, 0);">check_cicle</i> </a>
+                    </h5>
+                    <span class="mb-0" style="color: rgb(0, 0, 0); font-size: small;"> Membros: 10 | Visitantes: 1 | Ofertas: 10,00
+                </span>
+                </div>
+            </div>
+            <br>
+
+            <div class="card" data-animation="true" style="background-color: rgb(255, 255, 255);" >
+                <div class="card-body text-center">
+                    <h5 class="font-weight-normal mt-3">
+                        <a href="#;"><strong style="color: rgb(0, 0, 0);">17/12/2022</strong> <i class="material-icons" style="margin: 0; width: 1rem; color: rgb(0, 255, 0);">check_cicle</i> </a>
+                    </h5>
+                    <span class="mb-0" style="color: rgb(0, 0, 0); font-size: small;"> Membros: 9 | Visitantes: 12 | Ofertas: 15,00
+                </span>
+                </div>
+            </div>
+            <br>
+
+
         </div>
     </div>
 
+</body>
 
-    <!-- <footer class="footer pt-5 " style="background-color: black;margin-top: 0px;">
-        <div class="container" style="color: white;">
-            <div class=" row">
-                <div class="col-md-3 mb-4 ms-auto">
-                    <div class="text-white">
-                        <a href="">
-                            <img src="/static/img/dna-empresarial-logo.png" alt="main_logo">
-                        </a>
-                    </div>
-                    <div>
-                        <ul class="d-flex flex-row ms-n3 nav">
-                            <li class="nav-item">
-                                <a class="nav-link pe-1" href="https://www.facebook.com/CreativeTim/" target="_blank">
-                                    <i class="fab fa-facebook text-lg opacity-8"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link pe-1" href="https://twitter.com/creativetim" target="_blank">
-                                    <i class="fab fa-twitter text-lg opacity-8"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link pe-1" href="https://dribbble.com/creativetim" target="_blank">
-                                    <i class="fab fa-dribbble text-lg opacity-8"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link pe-1" href="https://github.com/creativetimofficial" target="_blank">
-                                    <i class="fab fa-github text-lg opacity-8"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link pe-1" href="https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w"
-                                    target="_blank">
-                                    <i class="fab fa-youtube text-lg opacity-8"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-6 col-6 mb-4">
-                    <div>
-                        <h6 class="text-sm text-white">Explorar</h6>
-                        <ul class="flex-column ms-n3 nav">
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="https://www.creative-tim.com/presentation"
-                                    target="_blank">
-                                    Sobre
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="https://www.creative-tim.com/templates/free"
-                                    target="_blank">
-                                    Soluções
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="https://www.creative-tim.com/templates/premium"
-                                    target="_blank">
-                                    Contato
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-6 col-6 mb-4">
-                    <div>
-                        <h6 class="text-sm text-white">Contato</h6>
-                        <ul class="flex-column ms-n3 nav">
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="https://iradesign.io/" target="_blank">
-                                    contato@dnaempresarial.digital
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white" href="https://www.creative-tim.com/bits" target="_blank">
-                                    (31) 9 9410-1533
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-6 col-6 mb-4"></div>
-                <!-- <div class="col-md-2 col-sm-6 col-6 mb-4"></div>  -->
-                <!-- <div class="col-12">
-                    <div class="text-center">
-                        <p class="text-white my-4 text-sm font-weight-normal">
-                            All rights reserved. Copyright ©
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer> --> -->
-    <!-- Lógica da página-->
+
     <script src="../static/js/functions-index.js"></script>
-    <!--   Core JS Files   -->
+
     <script src="../static/js/core/popper.min.js" type="text/javascript"></script>
     <script src="../static/js/core/bootstrap.min.js" type="text/javascript"></script>
     <script src="../static/js/plugins/perfect-scrollbar.min.js"></script>
@@ -237,7 +144,7 @@
 
     <script src="../static/js/jquery.slim.min.js"></script>
     <script src="../static/js/brmap.js"></script>
-<!-- 
+
     <script>
         function makeSearch() {
             document.getElementById("lista-by-cnpj").style.display = null;
@@ -246,9 +153,9 @@
         function makeSearch2() {
             document.getElementById("lista-by-filter").style.display = null;
         }
-    </script> -->
+    </script>
 
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
         !function (a) { a.fn.percentageLoader = function (b) { this.each(function () { function q() { p.customAttributes.arc = function (a, b, c) { var h, d = 360 / b * a, e = (90 - d) * Math.PI / 180, f = j + c * Math.cos(e), g = k - c * Math.sin(e); return h = b == a ? [["M", j, k - c], ["A", c, c, 0, 1, 1, j - .01, k - c]] : [["M", j, k - c], ["A", c, c, 0, +(d > 180), 1, f, g]], { path: h } }, p.path().attr({ arc: [100, 100, l], "stroke-width": d.strokeWidth, stroke: d.bgColor }), e && (m = p.path().attr({ arc: [.01, 100, l], "stroke-width": d.strokeWidth, stroke: d.ringColor, cursor: "pointer" }), r(e, 100, l, m, 2)), n = p.text(j, k, e + "%").attr({ font: d.fontWeight + " " + d.fontSize + " Arial", fill: d.textColor }) } function r(a, b, c, d) { f ? d.animate({ arc: [a, b, c] }, 900, ">") : a && a != b ? d.animate({ arc: [a, b, c] }, 750, "elastic") : (a = b, d.animate({ arc: [a, b, c] }, 750, "bounce", function () { d.attr({ arc: [0, b, c] }) })) } var c = a(this), d = a.extend({}, a.fn.percentageLoader.defaultConfig, b), e = parseInt(c.children(d.valElement).text()), f = !0, h = parseInt(c.css("width")), i = parseInt(c.css("height")), j = h / 2, k = i / 2, l = j - d.strokeWidth / 2, m = null, n = null, p = Raphael(this, h, i); q() }) }, a.fn.percentageLoader.defaultConfig = { valElement: "p", strokeWidth: 20, bgColor: "#d9d9d9", ringColor: "#d53f3f", textColor: "#9a9a9a", fontSize: "12px", fontWeight: "normal" } }(jQuery);
     </script>
 
@@ -390,7 +297,7 @@
         }
 
 
-    </script> -->
+    </script>
 
     <!--  Google Maps Plugin    -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>

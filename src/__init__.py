@@ -12,6 +12,7 @@ from src.controllers.empresa_controller import *
 from src.controllers.home_controller import *
 from src.controllers.registration_user_controller import *
 from src.controllers.plataform_controller import *
+from src.controllers.reports_controller import *
 
 
 
