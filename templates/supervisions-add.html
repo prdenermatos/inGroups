@@ -91,81 +91,102 @@
             <br>
             <div>
               
-                <span><i class="material-icons">keyboard_double_arrow_left</i><a href="/reports" >Voltar</a></span>
+                <span><i class="material-icons">keyboard_double_arrow_left</i><a href="/supervision" >Voltar</a></span>
             </div>
             <div style="color: white;">
-                <h3 class="d-flex justify-content-center mb-3" >Cadastre um relatório!</h3>
+                <h3 class="d-flex justify-content-center mb-3" >Relatório de Supervisão:</h3>
             </div>
             
             <div class="p-4 bg-light">
                 <form  action="#" method="post">
                     <div class="row">
                         <div class="col-md-6">
+                            <div class="input-group input-group-static mb-4">
+                                <label for="exampleFormControlSelect1" class="ms-0">célula</label>
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                  <option></option>
+                                  <option>Essência do Rei</option>
+                                  <option>Raio Sagrado</option>
+                                  <option>Deus Proverá</option>
+                                 
+                                </select>
+                              </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
                                 <label class="form-label"></label>
                                 <input type="date" name="date" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="input-group input-group-outline is-valid my-3">
-                                <label class="form-label">Nº Membros</label>
-                                <input type="number" name="total_members" class="form-control" required>
-                            </div>
+                        
+                        <div class="input-group input-group-dynamic">
+                            <textarea class="form-control" rows="5" placeholder="Descreva PONTOS POSITIVOS" spellcheck="false"></textarea>
                         </div>
+                        <div class="input-group input-group-dynamic">
+                            <textarea class="form-control" rows="5" placeholder="Descreva PONTOS DE MELHORIA" spellcheck="false"></textarea>
+                        </div>
+                        
+
+                        <h5 style="padding-top: 1rem;">ANÁLISE DO DNA: </h5>
+                        <p>Pontue de 0 a 10 cada item:</p>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
-                                <label class="form-label">Nº Visitantes</label>
+                                <label class="form-label">Cultura de Evangelismo</label>
                                 <input type="number" name="total_visitors" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
-                                <label class="form-label">Nº Pessoas em um MDA ou GD</label>
+                                <label class="form-label">Cultura de Integração</label>
                                 <input type="number" name="total_discipleship" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
-                                <label class="form-label">Nº Crianças</label>
+                                <label class="form-label">Cultura de Comunhão</label>
                                 <input type="number" name="total_childrens" class="form-control" required> <!-- options-->
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
-                                <label class="form-label">Nº Frequentes Culto Celebração</label>
+                                <label class="form-label">Cultura de Discipulado</label>
                                 <input type="number" name="total_celebration" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
-                                <label class="form-label">Nº Frequentes Renovo</label>
+                                <label class="form-label">Cultura de Treinamento</label>
                                 <input type="number" name="total_renove" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
-                                <label class="form-label">Ofertas</label>
-                                <input type="text" name="total_cash" class="form-control" required>
+                                <label class="form-label">Cultora de Multiplicação</label>
+                                <input type="number" name="total_cash" class="form-control" required>
                             </div>
                         </div>
-                        <div> <span style="color: rgb(0, 0, 0);"> Desmarque os faltantes da semana: </span> </div>
+                        <div> <span style="color: rgb(0, 0, 0);"> Boas práticas: </span> </div>
                         <br>
                         <!-- puxa lista filtrando por célula-->
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" checked="">
-                            <label class="custom-control-label" for="customCheck1">Dener Matos</label>
+                            <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" >
+                            <label class="custom-control-label" for="customCheck1">Pontualidade</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" checked="">
-                            <label class="custom-control-label" for="customCheck1">Israel Matos</label>
+                            <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" >
+                            <label class="custom-control-label" for="customCheck1">Ambiente Organizado</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" checked="">
-                            <label class="custom-control-label" for="customCheck1">Cecilia Matos</label>
+                            <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" >
+                            <label class="custom-control-label" for="customCheck1">Limpeza e organização pós célula</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" checked="">
-                            <label class="custom-control-label" for="customCheck1">Tatiane Matos</label>
+                            <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" >
+                            <label class="custom-control-label" for="customCheck1">Avisos feitos</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="fcustomCheck1" >
+                            <label class="custom-control-label" for="customCheck1">Recepção calorosa</label>
                         </div>
                         
                     </div>

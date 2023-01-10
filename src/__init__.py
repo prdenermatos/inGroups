@@ -14,6 +14,9 @@ from src.controllers.registration_user_controller import *
 from src.controllers.plataform_controller import *
 from src.controllers.reports_controller import *
 from src.controllers.reports_add_controller import *
+from src.controllers.shepherd_controller import *
+from src.controllers.trail_details_controller import *
+from src.controllers.supervision_controller import *
 
 
 
