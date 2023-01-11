@@ -9,5 +9,14 @@ def views_sheep():
     #     return redirect('/')
 
     
-    return render_template("shepherd.html");
+    return render_template("shepherd.html")
+
+@app.route('/menu-shepherd', methods = ['GET', 'POST'])
+def menu_shepherd():
+    return render_template('menu-shepherd.html')
+
+
+@app.route('/missing_members', methods = ['GET', 'POST'])
+def views_missing_members(): 
+    return render_template('missing-members.html')
 
