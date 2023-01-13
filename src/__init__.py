@@ -19,6 +19,7 @@ from src.controllers.trail_details_controller import *
 from src.controllers.supervision_controller import *
 from src.controllers.schedule_controller import * 
 from src.controllers.visitors_controller import *
+from src.controllers.settings_controller import *
 
 
 
