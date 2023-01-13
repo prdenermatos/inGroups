@@ -10,3 +10,8 @@ def menu_settings():
 
     
     return render_template("menu-settings.html")
+
+
+@app.route('/settings-church', methods = ['GET', 'POST'])
+def settigns_church():
+    return render_template("settings-church.html")
