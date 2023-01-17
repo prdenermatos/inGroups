@@ -33,3 +33,12 @@ def settings_cults():
 @app.route('/list-cults', methods = ['GET', 'POST'])
 def list_cults(): 
     return render_template('list-cults.html')
+
+
+@app.route('/settings-trails', methods = ['GET', 'POST'])
+def settings_trails(): 
+    return render_template('settings-trails.html')
+
+@app.route('/list-trails', methods = ['GET', 'POST'])
+def list_trails(): 
+    return render_template('list-trails.html')
