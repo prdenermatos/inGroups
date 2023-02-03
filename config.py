@@ -1,7 +1,7 @@
 
 DEBUG = True 
 
-SQLALCHEMY_DATABASE_URI = 'mysql://root:@server/ingroup'
+SQLALCHEMY_DATABASE_URI = 'mysql://root:@127.0.0.1:3308/ingroup'
 
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 

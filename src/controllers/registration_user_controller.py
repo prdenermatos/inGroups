@@ -1,5 +1,6 @@
 from flask import render_template, redirect, request, flash, session
-from src import *
+from src import db, app
+from src.models.tables import User
 from src.services.validation_register_user_services import ValidationRegisterUserServices as VRS
 from src.services.cripto_password_service import CriptoPasswordService as CPS
 
@@ -12,17 +13,15 @@ def registration_user():
 
 @app.route('/create-user', methods= ['POST'])
 def create_user():
-    data_user_create = {
-        'nome': request.form['nome'],
-        'email': request.form['email'],
-        'senha': request.form['senha'],
 
-    }
+    nome = request.form['nome'],
+    email = request.form['email'],
+    senha = request.form['senha'],
+
+    user = User(nome, email, senha)
 
 
-    print(data_user_create)
-
-    db.session.add(data_user_create['email'], data_user_create['senha'])
+    db.session.add(user)
     db.session.commit()
 
 
