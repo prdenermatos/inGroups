@@ -95,7 +95,28 @@
            
             <div class="p-4 bg-light">
                 <form  action="/create-user" method="post">
-                    <div class="row">
+
+                      <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-group input-group-outline is-valid my-3">
+                                <label class="form-label">Nome</label>
+                                <input type="text" name="nome" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group input-group-outline is-valid my-3">
+                                <label class="form-label">email</label>
+                                <input type="text" name="email" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group input-group-outline is-valid my-3">
+                                <label class="form-label">senha</label>
+                                <input type="text" name="senha" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
                                 <label class="form-label">Primeiro Nome</label>
@@ -251,7 +272,7 @@
                         </div>
                        
                         
-                    </div>
+                    </div> -->
                     <br>
                     <button type="submit" class="btn btn-success">Salvar</button>
                 </form>
