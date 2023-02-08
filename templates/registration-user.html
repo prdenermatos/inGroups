@@ -95,28 +95,7 @@
            
             <div class="p-4 bg-light">
                 <form  action="/create-user" method="post">
-
-                      <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-group input-group-outline is-valid my-3">
-                                <label class="form-label">Nome</label>
-                                <input type="text" name="nome" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="input-group input-group-outline is-valid my-3">
-                                <label class="form-label">email</label>
-                                <input type="text" name="email" class="form-control" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="input-group input-group-outline is-valid my-3">
-                                <label class="form-label">senha</label>
-                                <input type="text" name="senha" class="form-control" required>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="row">
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
                                 <label class="form-label">Primeiro Nome</label>
@@ -132,7 +111,7 @@
                         <div class="col-md-6">
                             <div class="input-group input-group-static mb-4">
                                 <label for="exampleFormControlSelect1" class="ms-0">Cargo</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select class="form-control" name="office" id="exampleFormControlSelect1">
                                   <option></option>
                                   <option>Pastor</option>
                                   <option>Líder de Célula </option>
@@ -146,37 +125,37 @@
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
                                 <label class="form-label">Nome da Mãe</label>
-                                <input type="text" name="last_name" class="form-control" required>
+                                <input type="text" name="mother_name" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
                                 <label class="form-label">Telefone da Mãe</label>
-                                <input type="text" name="last_name" class="form-control" >
+                                <input type="text" name="tel_mother" class="form-control" >
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
                                 <label class="form-label">Nome do Pai</label>
-                                <input type="text" name="last_name" class="form-control" required>
+                                <input type="text" name="dad_name" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
                                 <label class="form-label">Telefone da Pai</label>
-                                <input type="text" name="last_name" class="form-control" >
+                                <input type="text" name="tel_dad" class="form-control" >
                             </div>
                         </div>
                         <div class="col-md-6"> 
                             <div class="input-group input-group-outline is-valid my-3" style="align-items: center;">
                                 <span style="font-size: small;  padding-right: 0.5rem !important;" >Data de Nascimento: </span>
-                                <input type="date" name="last_name" class="form-control" required>
+                                <input type="date" name="date_birth" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-md-6"> 
                             <div class="input-group input-group-outline is-valid my-3" style="align-items: center;">
                                 <span style="font-size: small;  padding-right: 0.5rem !important;" >Início como Membro: </span>
-                                <input type="date" name="last_name" class="form-control" required>
+                                <input type="date" name="date_member" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -194,13 +173,13 @@
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
                                 <label class="form-label">Nº</label>
-                                <input type="tel" name="address" class="form-control" required>
+                                <input type="tel" name="address_number" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-static mb-4">
                                 <label for="exampleFormControlSelect1" class="ms-0">Bairro</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select class="form-control" name="district" id="exampleFormControlSelect1">
                                   <option></option>
                                   <option>Cidade Nova</option>
                                   <option>Lourdes </option>
@@ -212,7 +191,7 @@
                         <div class="col-md-6">
                             <div class="input-group input-group-static mb-4">
                                 <label for="exampleFormControlSelect1" class="ms-0">Cidade</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select class="form-control" name="city" id="exampleFormControlSelect1">
                                   <option></option>
                                   <option>Uberaba</option>
                                   <option>Uberlândia </option>
@@ -225,7 +204,7 @@
                         <div class="col-md-6">
                             <div class="input-group input-group-static mb-4">
                                 <label for="exampleFormControlSelect1" class="ms-0">Qual célula frequenta?</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select class="form-control" name="group" id="exampleFormControlSelect1">
                                     <option></option>
                                     <option>Nenhuma</option>
                                     <option>Raio Sagrado</option>
@@ -236,18 +215,16 @@
                               </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="customRadio1">
-                                <label class="custom-control-label" for="customRadio1">Já me batizei</label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="customRadio2">
-                                <label class="custom-control-label" for="customRadio2">Ainda não me batizei</label>
+                            <div class="input-group input-group-static mb-4">
+                                <label for="exampleFormControlSelect1" class="ms-0">Qual célula frequenta?</label>
+                                <select class="form-control" name="isBatism" id="exampleFormControlSelect1">
+                                    <option></option>
+                                    <option>Sim</option>
+                                    <option>Não</option>
+                                </select>
                               </div>
                         </div>
-
-                        
-                        
+                   
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
                                 <label class="form-label">E-mail (usado para login)</label>
@@ -268,11 +245,9 @@
                         </div>
                         <div class="col-md-6" style=" display: flex; flex-direction: column;" > 
                             <span style="display: flex;">Insira uma foto</span>
-                            <input type="file" style="max-width: 255px; display: flex;" >
+                            <input type="file" name="foto" style="max-width: 255px; display: flex;" >
                         </div>
-                       
-                        
-                    </div> -->
+                    </div>
                     <br>
                     <button type="submit" class="btn btn-success">Salvar</button>
                 </form>

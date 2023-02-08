@@ -4,19 +4,45 @@ from src.models.tables import User
 from src.services.validation_register_user_services import ValidationRegisterUserServices as VRS
 from src.services.cripto_password_service import CriptoPasswordService as CPS
 
-data_mocado_test = []
+
 
 
 @app.route('/registration-user', methods = ['GET', 'POST'])
 def registration_user():
+    '''
+    implement finds to create forms
+    '''
     return render_template("registration-user.html")
 
 @app.route('/create-user', methods= ['POST'])
 def create_user():
 
-    nome = request.form['nome'],
-    email = request.form['email'],
-    senha = request.form['senha'],
+    first_name = request.form['first_name'],
+    last_name = request.form['last_name'],
+    office = request.form['office'],
+    mother_name = request.form['mother_name'], 
+    tel_mother = request.form['tel_mother'], 
+    dad_name = request.form['dad_name'], 
+    tel_dad = request.form['tel_dad'], 
+    date_birth = request.form['date_birth'], 
+    date_member = request.form['date_member'], 
+    telephone = request.form['telephone'], 
+    address = request.form['address'], 
+    address_number = request.form['address_number'], 
+    district = request.form['district'], 
+    city = request.form['city'], 
+    group = request.form['group'], 
+    isBatism = request.form['isBatism'], 
+    email = request.form['email'], 
+    password = request.form['password'], 
+    password_confirme = request.form['password_confirme'], 
+    hash_foto = ...
+
+
+
+
+ 
+
 
     user = User(nome, email, senha)
 

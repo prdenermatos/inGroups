@@ -1,18 +1,173 @@
 from src import *
 
+class Church(db.Model):
+    __tablename__ = 'church'
+
+    id = db.Column(db.Integer, primary_key=True)
+    create_date = db.Column(db.String(100))
+    church_name = db.Column(db.String(100))
+    cnpj = db.Column(db.String(100))
+    president_name = db.Column(db.String(100))
+    street_number = db.Column(db.String(100))
+    district =db.Column(db.String(100))
+    city = db.Column(db.String(100))
+    vice_president_name = db.Column(db.String(100))
+    first_secretary = db.Column(db.String(100))
+    second_secretary = db.Column(db.String(100))
+    first_treasurer = db.Column(db.String(100))
+    second_treasurer =db.Column(db.String(100))
+
+    def __init__(self, id, create_date,
+                  church_name, cnpj,
+                    president_name,
+                    street_number,
+                    district, city,
+                    vice_president_name, 
+                    first_secretary, 
+                    second_secretary, 
+                    first_treasurer, 
+                    second_treasurer
+                    ):
+        self.id = id
+        self.create_date = create_date
+        self.church_name = church_name
+        self.cnpj = cnpj
+        self.president_name = president_name
+        self.street_number = street_number
+        self.district = district
+        self.city = city
+        self.vice_president_name = vice_president_name
+        self.first_secretary = first_secretary
+        self.second_secretary = second_secretary
+        self.first_treasurer = first_treasurer
+        self.second_treasurer = second_treasurer
+    
+    def __repr__(self):
+        return '<Church %r>' % self.church_name  
+
+
+
+class Network(db.Model):
+    __tablename__ = 'network'
+    id = db.Column(db.Integer, primary_key=True)
+    network_name = db.Column(db.String(100))
+    leader_name = db.Column(db.String(100))
+
+
+    def __init__(self, id, network_name, leader_name):
+        self.id = id
+        self.network_name = network_name
+        self.leader_name = leader_name
+    
+    def __repr__(self):
+        return '<Network %r>' % self.network_name  
+
+
+class Sector(db.Model):
+    __tablename__ = 'sector'
+    id = db.Column(db.Integer, primary_key=True)
+    sector_name = db.Column(db.String(100))
+    leader_name = db.Column(db.String(100))
+    networkId = db.ForeignKey(Network.id)
+
+    def __init__(self, id, sector_name, leader_name, networkId):
+        self.id = id
+        self.sector_name = sector_name
+        self.leader_name = leader_name
+        self.networkId = networkId
+    
+    def __repr__(self):
+        return '<Sector %r>' % self.sector_name 
+
+class Group(db.Model):
+    __tablename__ = 'group'
+
+    id = db.Column(db.Integer, primary_key=True )
+    create_date = db.Column(db.String(100))
+    group_name =  db.Column(db.String(100))
+    leader_name = db.Column(db.String(100))
+    vice_leader_name = db.Column(db.String(100))
+    street_number = db.Column(db.String(100))
+    district = db.Column(db.String(100))
+    city = db.Column(db.String(100))
+    sectorId = db.ForeignKey(Sector.id)
+    host_name = db.Column(db.String(100))
+    meeting_day = db.Column(db.String(100))
+    meeting_time = db.Column(db.String(100))
+    enabled = db.Column(db.Integer)
+
+    def __init__(self, id, create_date, group_name, leader_name, vice_leader_name, street_number,
+                  district, city, sectorId, host_name, meeting_day, meeting_time,  enabled ):
+        
+        self.id = id
+        self.create_date = create_date
+        self.group_name = group_name
+        self.leader_name = leader_name
+        self.vice_leader_name = vice_leader_name
+        self.street_number = street_number 
+        self.district = district
+        self.city = city 
+        self.sectorId = sectorId
+        self.host_name = host_name
+        self.meeting_day = meeting_day
+        self.meeting_time = meeting_time
+        self.enabled = enabled
+    
+    def __repr__(self):
+        return '<Group %r>' % self.group_name
+
+
 class User(db.Model):
     __tablename__ = "user"
 
     id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(20))
-    email = db.Column(db.String(30))
-    senha = db.Column(db.String(30))
+    first_name = db.Column(db.String(100))
+    last_name = db.Column(db.String(100))
+    office = db.Column(db.String(100))
+    mother_name = db.Column(db.String(100))
+    tel_mother = db.Column(db.String(100)) 
+    dad_name =db.Column(db.String(100))
+    tel_dad = db.Column(db.String(100))
+    date_birth = db.Column(db.String(100))
+    date_member = db.Column(db.String(100)) 
+    telephone = db.Column(db.String(100)) 
+    address = db.Column(db.String(100)) 
+    address_number = db.Column(db.String(100)) 
+    district = db.Column(db.String(100))
+    city = db.Column(db.String(100))
+    groupId = db.Column(db.ForeignKey(Group.id)) #revisar 
+    isBatism = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    password = db.Column(db.String(100))
+   
 
-    def __init__(self, nome, email, senha):
-        self.nome = nome
+    def __init__(self, first_name, last_name, office,
+                  mother_name, tel_mother, dad_name, 
+                  tel_dad, date_birth, date_member, 
+                  telephone, address, address_number, 
+                  district, city, groupId, isBatism,
+                  email, password
+                    ):
+         
+        self.first_name = first_name
+        self.last_name = last_name
+        self.office = office
+        self.mother_name = mother_name
+        self.tel_mother =tel_mother
+        self.dad_name = dad_name
+        self.tel_dad = tel_dad
+        self.date_birth = date_birth
+        self.date_member = date_member
+        self.telephone = telephone
+        self.address = address
+        self.address_number = address_number
+        self.district = district
+        self.city = city
+        self.groupId = groupId
+        self.isBatism = isBatism
         self.email = email
-        self.senha = senha
-
+        self.password = password
 
     def __repr__(self):
-        return '<Usuario %r>' % self.nome  
+        return '<Usuario %r>' % self.first_name  
+
