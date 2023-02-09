@@ -45,6 +45,32 @@ class Church(db.Model):
     def __repr__(self):
         return '<Church %r>' % self.church_name  
 
+class Cults(db.Model):
+    __tablename__ = 'cults'
+
+    id = db.Column(db.Integer, primary_key=True)
+    create_date = ...
+    cult_name = ...
+    leader_name = ...
+    ...
+
+class Schedule(db.Model):
+    ...
+
+class MissingMembers(db.Model):
+    ...
+
+class Visitor(db.Model):
+    ...
+
+class Journey(db.Model):
+    ...
+
+class VisitorJourney(db.Model):
+    ...
+
+class SupervisionReports(db.Model):
+    ...
 
 
 class Network(db.Model):
@@ -68,7 +94,7 @@ class Sector(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sector_name = db.Column(db.String(100))
     leader_name = db.Column(db.String(100))
-    networkId = db.ForeignKey(Network.id)
+    networkId = db.Column(db.ForeignKey(Network.id))
 
     def __init__(self, id, sector_name, leader_name, networkId):
         self.id = id
@@ -90,7 +116,7 @@ class Group(db.Model):
     street_number = db.Column(db.String(100))
     district = db.Column(db.String(100))
     city = db.Column(db.String(100))
-    sectorId = db.ForeignKey(Sector.id)
+    sectorId = db.Column(db.ForeignKey(Sector.id)) 
     host_name = db.Column(db.String(100))
     meeting_day = db.Column(db.String(100))
     meeting_time = db.Column(db.String(100))
@@ -116,6 +142,58 @@ class Group(db.Model):
     def __repr__(self):
         return '<Group %r>' % self.group_name
 
+class Ministry(db.Model):
+    __tablename__ = 'ministry'
+
+    id = db.Column(db.Integer, primary_key=True )
+    ministry_name = db.Column(db.String(100))
+    leader_name = db.Column(db.String(100))
+    enabled = db.Column(db.Integer)
+
+
+    def __init__(self, id, ministry_name, leader_name, enabled):
+        self.id = id 
+        self.ministry_name = ministry_name 
+        self.leader_name = leader_name 
+        self.enabled = enabled 
+
+    def __repr__(self):
+        return '<Ministry %r>' % self.ministry_name
+
+
+class Office(db.Model):
+    __tablename__ = 'office'
+
+    id = db.Column(db.Integer, primary_key=True )
+    office_name = db.Column(db.String(100))
+    leader_name = db.Column(db.String(100))
+    enabled = db.Column(db.Integer)
+
+
+    def __init__(self, id, office_name, leader_name, enabled):
+        self.id = id 
+        self.office_name = office_name 
+        self.leader_name = leader_name 
+        self.enabled = enabled 
+
+    def __repr__(self):
+        return '<Office %r>' % self.office_name
+
+class Trail(db.Model):
+    __tablename__ = 'trail'
+
+    id = db.Column(db.Integer, primary_key=True)
+    trail_name = db.Column(db.String(100))
+    description = db.Column(db.String(100))
+    enabled = db.Column(db.Integer)
+
+    def __init__(self, id, trail_name, enabled):
+        self.id = id
+        self.trail_name = trail_name 
+        self.enabled = enabled
+    
+    def __repr__(self):
+        return '<Trail %r>' % self.trail_name
 
 class User(db.Model):
     __tablename__ = "user"
@@ -135,7 +213,7 @@ class User(db.Model):
     address_number = db.Column(db.String(100)) 
     district = db.Column(db.String(100))
     city = db.Column(db.String(100))
-    groupId = db.Column(db.ForeignKey(Group.id)) #revisar 
+    groupId = db.Column(db.ForeignKey(Group.id))  
     isBatism = db.Column(db.String(100))
     email = db.Column(db.String(100))
     password = db.Column(db.String(100))
@@ -170,4 +248,20 @@ class User(db.Model):
 
     def __repr__(self):
         return '<Usuario %r>' % self.first_name  
+    
+class UserTrail(db.Model):
+    __tablename__ = 'user_trail'
+
+    userId =  db.Column(db.ForeignKey(User.id), primary_key = True)
+    trailId =  db.Column(db.ForeignKey(Trail.id), primary_key = True)
+
+    def __init__(self, userId, trailId):
+        self.userId = userId 
+        self.trailId = trailId
+
+
+    def __repr__(self):
+        return '<UserTrail %r>' % self.userId  
+
+
 
