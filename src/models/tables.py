@@ -55,21 +55,33 @@ class Cults(db.Model):
     ...
 
 class Schedule(db.Model):
+    __tablename__ = 'schedule'
+    id = db.Column(db.Integer, primary_key=True)
     ...
 
 class MissingMembers(db.Model):
+    __tablename__ = 'missing_members'
+    id = db.Column(db.Integer, primary_key=True)
     ...
 
 class Visitor(db.Model):
+    __tablename__ = 'visitor'
+    id = db.Column(db.Integer, primary_key=True)
     ...
 
 class Journey(db.Model):
+    __tablename__ = 'journey'
+    id = db.Column(db.Integer, primary_key=True)
     ...
 
 class VisitorJourney(db.Model):
+    __tablename__ = 'visitor_journey'
+    id = db.Column(db.Integer, primary_key=True)
     ...
 
 class SupervisionReports(db.Model):
+    __tablename__ = 'supervision_reports'
+    id = db.Column(db.Integer, primary_key=True)
     ...
 
 
