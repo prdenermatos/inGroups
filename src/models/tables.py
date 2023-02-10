@@ -49,10 +49,35 @@ class Cults(db.Model):
     __tablename__ = 'cults'
 
     id = db.Column(db.Integer, primary_key=True)
-    create_date = ...
-    cult_name = ...
-    leader_name = ...
-    ...
+    create_date = db.Column(db.String(100))
+    cult_name = db.Column(db.String(100))
+    leader_name = db.Column(db.String(100))
+    frequency = db.Column(db.Enum('semanal', 'quinzenal', 'mensal', 'bimestral'))
+    meeting_day_time = db.Column(db.String(100))
+    meeting_time_start = db.Column(db.String(100))
+    meeting_time_end = db.Column(db.String(100))
+    enabled =  db.Column(db.Integer)
+
+    def __init__(self, id, create_date, cult_name, leader_name, frequency,
+                  meeting_day_time, meeting_time_start, meeting_time_end, 
+                  enabled):
+        
+        self.id = id 
+        self.create_date = create_date 
+        self.cult_name = cult_name 
+        self.leader_name = leader_name 
+        self.frequency = frequency 
+        self.meeting_day_time = meeting_day_time 
+        self.meeting_time_start = meeting_time_start 
+        self.meeting_time_end = meeting_time_end
+        self.enabled = enabled
+    
+        def __repr__(self):
+            return '<Cults %r>' % self.cult_name
+        
+
+    
+    
 
 class Schedule(db.Model):
     __tablename__ = 'schedule'
