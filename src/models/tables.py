@@ -107,14 +107,44 @@ class Schedule(db.Model):
 class Visitor(db.Model):
     __tablename__ = 'visitor'
     id = db.Column(db.Integer, primary_key=True)
-    ...
+    visitor_name = db.Column(db.String(100))
+    visitor_date =db.Column(db.String(100))
+    contact_telephone = db.Column(db.String(100))
+    street_number = db.Column(db.String(100))
+    district = db.Column(db.String(100))
+    host_visitor = db.Column(db.String(100))
+    escort_name = db.Column(db.String(100))
+    visitor_cult =  db.Column(db.String(100))
+    is_frequency_group = db.Column(db.String(100))
+    is_member_church = db.Column(db.String(100))
+    enabled = db.Column(db.Integer)
 
-class Journey(db.Model):
+    def __init__(self, id, visitor_name, visitor_date, contact_telephone, 
+                 street_number, district, host_visitor, escort_name, visitor_cult, 
+                 is_frequency_group, is_member_church, enabled):
+        self.id = id 
+        self.visitor_name = visitor_name
+        self.visitor_date = visitor_date
+        self.contact_telephone = contact_telephone
+        self.street_number = street_number 
+        self.district = district 
+        self.host_visitor = host_visitor
+        self.escort_name = escort_name 
+        self.visitor_cult = visitor_cult 
+        self.is_frequency_group = is_frequency_group
+        self.is_member_church = is_member_church
+        self.enabled = enabled
+
+    def __repr__(self):
+        return '<Visitor %r>' % self.visitor_name
+
+
+class JourneyStepper(db.Model):
     __tablename__ = 'journey'
     id = db.Column(db.Integer, primary_key=True)
     ...
 
-class VisitorJourney(db.Model):
+class VisitorJourney(db.Model): #many_to_many
     __tablename__ = 'visitor_journey'
     id = db.Column(db.Integer, primary_key=True)
     ...
@@ -211,7 +241,7 @@ class Reports(db.Model):
 class MissingMembers(db.Model):
     __tablename__ = 'missing_members'
     
-    userId =  db.Column(db.ForeignKey(User.id), primary_key = True)
+    userId =  db.Column(db.Integer)
     reportId =  db.Column(db.ForeignKey(Reports.id), primary_key = True)
     groupId = db.Column(db.ForeignKey(Group.id), primary_key = True)
     missing_date = db.Column(db.DateTime, server_default=db.func.now())
