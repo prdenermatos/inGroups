@@ -76,18 +76,33 @@ class Cults(db.Model):
             return '<Cults %r>' % self.cult_name
         
 
-    
-    
 
 class Schedule(db.Model):
     __tablename__ = 'schedule'
     id = db.Column(db.Integer, primary_key=True)
-    ...
+    event_name = db.Column(db.String(100))
+    user_leader = db.Column(db.String(100))
+    event_type =  db.Column(db.Enum('Culto', 'Conferência', 'Treinamento', 'Outros'))
+    initial_date = db.Column(db.String(100))
+    finaly_date =db.Column(db.String(100))
+    description = db.Column(db.String(100))
+    event_name = db.Column(db.String(100))
 
-class MissingMembers(db.Model):
-    __tablename__ = 'missing_members'
-    id = db.Column(db.Integer, primary_key=True)
-    ...
+
+    def __init__(self, id, event_name, user_leader, event_type, initial_date, finaly_date, description, folder_name):
+        self.id = id 
+        self.event_name = event_name
+        self.user_leader = user_leader 
+        self.event_type = event_type 
+        self.initial_date = initial_date 
+        self.finaly_date = finaly_date 
+        self.description = description
+        self.folder_name = folder_name
+        
+    
+    def __repr__(self):
+        return '<Schedule %r>' % self.event_name
+
 
 class Visitor(db.Model):
     __tablename__ = 'visitor'
@@ -178,6 +193,40 @@ class Group(db.Model):
     
     def __repr__(self):
         return '<Group %r>' % self.group_name
+
+class Reports(db.Model):
+    __tablename__ = 'reports'
+    id = db.Column(db.Integer, primary_key=True) 
+    groupId = db.Column(db.ForeignKey(Group.id))
+    meeting_date = db.Column(db.String(100))
+    total_members = db.Column(db.Integer)
+    total_visitors = db.Column(db.Integer)
+    total_mdas = db.Column(db.Integer)
+    total_children = db.Column(db.Integer)
+    total_frequency_cult_celebration = db.Column(db.Integer)
+    total_frequency_cult_renove = db.Column(db.Integer)
+    total_offers = db.Column(db.Integer)
+
+
+class MissingMembers(db.Model):
+    __tablename__ = 'missing_members'
+    
+    userId =  db.Column(db.ForeignKey(User.id), primary_key = True)
+    reportId =  db.Column(db.ForeignKey(Reports.id), primary_key = True)
+    groupId = db.Column(db.ForeignKey(Group.id), primary_key = True)
+    missing_date = db.Column(db.DateTime, server_default=db.func.now())
+
+
+    def __init__(self, userId, reportId, groupId, missing_date ):
+        self.userId = userId 
+        self.reportId = reportId
+        self.groupId = groupId
+        self.missing_date = missing_date
+
+
+    def __repr__(self):
+        return '<UserTrail %r>' % self.userId  
+
 
 class Ministry(db.Model):
     __tablename__ = 'ministry'
