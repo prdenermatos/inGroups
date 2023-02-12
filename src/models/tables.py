@@ -139,19 +139,36 @@ class Visitor(db.Model):
         return '<Visitor %r>' % self.visitor_name
 
 
-class JourneyStepper(db.Model):
+class JourneyStepper(db.Model): # (add crud in front)
     __tablename__ = 'journey'
     id = db.Column(db.Integer, primary_key=True)
-    ...
+    stepper_name = db.Column(db.String(100))
+    enabled = db.Column(db.Integer)
 
-class VisitorJourney(db.Model): #many_to_many
+    def __init__(self, id, stepper_name, enabled) -> None:
+        self.id = id 
+        self.stepper_name = stepper_name 
+        self.enabled = enabled 
+    
+    def __repr__(self) -> str:
+        return '<JourneyStepper %r>' % self.stepper_name
+
+    
+
+class VisitorJourney(db.Model): #many_to_many 
     __tablename__ = 'visitor_journey'
-    id = db.Column(db.Integer, primary_key=True)
-    ...
 
-class SupervisionReports(db.Model):
-    __tablename__ = 'supervision_reports'
-    id = db.Column(db.Integer, primary_key=True)
+    visitorId =  db.Column(db.ForeignKey(Visitor.id), primary_key = True)
+    journeyStepperId =  db.Column(db.ForeignKey(JourneyStepper.id), primary_key = True)
+
+    def __init__(self, visitorId, journeyStepperId):
+        self.visitorId = visitorId 
+        self.journeyStepperId = journeyStepperId
+
+
+    def __repr__(self):
+        return '<VisitorJourney %r>' % self.visitorId  
+    
     ...
 
 
@@ -378,6 +395,53 @@ class UserTrail(db.Model):
 
     def __repr__(self):
         return '<UserTrail %r>' % self.userId  
+
+
+class SupervisionReports(db.Model):
+    __tablename__ = 'supervision_reports'
+    id = db.Column(db.Integer, primary_key=True)
+    supervion_by_userId = db.Column(db.ForeignKey(User.id)) 
+    groupId = db.Column(db.ForeignKey(Group.id)) 
+    supervison_date = db.Column(db.String(100))
+    description_strengths_points = db.Column(db.String(225))
+    description_negative_points = db.Column(db.String(225))
+    evangelism_points = db.Column(db.Integer)
+    integration_points = db.Column(db.Integer)
+    communion_points = db.Column(db.Integer)
+    discipleship_points = db.Column(db.Integer)
+    training_points =db.Column(db.Integer)
+    multiplication_points = db.Column(db.Integer)
+    is_potentiality = db.Column(db.Integer)
+    is_organized_environment = db.Column(db.Integer)
+    is_cleaning_after_meeting = db.Column(db.Integer)
+    is_notices_made = db.Column(db.Integer)
+    is_excellent_reception = db.Column(db.Integer)
+
+    def __init__(self, id, supervion_by_userId, groupId, supervison_date, description_strengths_points,
+                 description_negative_points, evangelism_points, communion_points, discipleship_points, 
+                  training_points, multiplication_points, is_potentiality, is_organized_environment, 
+                is_cleaning_after_meeting,  is_notices_made, is_excellent_reception  ):
+        self.id = id 
+        self.supervion_by_userId = supervion_by_userId
+        self.groupId = groupId 
+        self.supervison_date = supervison_date
+        self.description_strengths_points = description_strengths_points 
+        self.description_negative_points = description_negative_points 
+        self.evangelism_points = evangelism_points 
+        self.communion_points = communion_points 
+        self.discipleship_points = discipleship_points 
+        self.training_points = training_points 
+        self.multiplication_points = multiplication_points 
+        self.is_potentiality = is_potentiality
+        self.is_organized_environment = is_organized_environment
+        self.is_cleaning_after_meeting = is_cleaning_after_meeting 
+        self.is_notices_made = is_notices_made 
+        self.is_excellent_reception = is_excellent_reception
+    
+    def __repr__(self):
+        return '<SupervisionReports %r>' % self.id
+
+
 
 
 

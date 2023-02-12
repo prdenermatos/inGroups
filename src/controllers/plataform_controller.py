@@ -9,5 +9,5 @@ def plataform_access():
     #     return redirect('/')
 
     
-    return render_template("plataform.html");
+    return render_template("plataform.html")
 

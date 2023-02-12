@@ -16,7 +16,7 @@ def registration_user():
 
 @app.route('/create-user', methods= ['POST'])
 def create_user():
-
+    
     first_name = request.form['first_name'],
     last_name = request.form['last_name'],
     office = request.form['office'],
@@ -31,20 +31,21 @@ def create_user():
     address_number = request.form['address_number'], 
     district = request.form['district'], 
     city = request.form['city'], 
-    group = request.form['group'], 
+    groupId = request.form['group'], 
     isBatism = request.form['isBatism'], 
     email = request.form['email'], 
     password = request.form['password'], 
     password_confirme = request.form['password_confirme'], 
     hash_foto = ...
 
+    # INSERT VALIDATION SERVICE METHODS
 
 
 
- 
-
-
-    user = User(nome, email, senha)
+    user = User(first_name, last_name, office, mother_name, 
+              tel_mother, dad_name, tel_dad, date_birth , 
+                date_member, telephone, address, address_number,
+                district, city, groupId, isBatism, email, password, hash_foto )
 
 
     db.session.add(user)

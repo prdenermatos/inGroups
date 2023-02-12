@@ -9,4 +9,7 @@ def index():
     #     return redirect('/')
 
     
-    return render_template("index.html");
+    return render_template("index.html")
+
+
+# ADC envio do form para email do ADM do sistema
