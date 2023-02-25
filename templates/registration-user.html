@@ -94,7 +94,7 @@
             </div>
            
             <div class="p-4 bg-light">
-                <form  action="/create-user" method="post">
+                <form  action="/create-user" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
@@ -243,9 +243,13 @@
                                 <input type="password" name="password_confirme" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-md-6" style=" display: flex; flex-direction: column;" > 
+                        <div class="col-md-6" style=" display: flex; flex-direction: column;" enctype="multipart/form-data" > 
                             <span style="display: flex;">Insira uma foto</span>
-                            <input type="file" name="foto" style="max-width: 255px; display: flex;" >
+                            {{ form.csrf_token  }}
+                            <p>
+                                {{ form.imagem.label }}
+                                {{ form.imagem }}
+                            </p>
                         </div>
                     </div>
                     <br>

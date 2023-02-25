@@ -1,18 +1,16 @@
-from hashlib import md5
+import hashlib
 
 class CriptoPasswordService: 
     def __init__ (self, password_register): 
-        self.password_register = password_register.encode("utf8")
+        self.password_register = password_register
     def encrypt(self):
-        cripto = md5(self.password_register).hexdigest()
-        hashed = self.password_register[0]
-        password_cripto = f'{hashed}{cripto}{hashed}'
-        return password_cripto 
+        senha = str = ''.join(self.password_register)
+        # print(senha, 'tipo:', type(senha) )
+        salt = 'saltsaltsalt'
+        hash_object = hashlib.sha256((senha + salt).encode('utf-8'))
+        hex_dig = hash_object.hexdigest()
+        return hex_dig
 
-    def decrypt(self, password_insert, password_cripto_find_db ) -> bool:
-        cripto = md5(password_insert.encode("utf8"))
-        hashed = password_insert[0]
-        password_avaliable = f'{hashed}{cripto}{hashed}'
-        return password_avaliable == password_cripto_find_db
+  
 
 

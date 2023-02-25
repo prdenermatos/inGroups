@@ -3,7 +3,22 @@ from src import db, app
 from src.models.tables import User
 from src.services.validation_register_user_services import ValidationRegisterUserServices as VRS
 from src.services.cripto_password_service import CriptoPasswordService as CPS
+from fileinput import filename
+from flask_wtf import FlaskForm
+from flask_wtf.file import FileField
+from werkzeug.utils import secure_filename
 
+class UploadForm(FlaskForm):
+    imagem = FileField('Imagem')
+
+
+def upload():
+    form = UploadForm()
+    if form.validate_on_submit():
+        imagem = form.imagem.data
+        filename = secure_filename(imagem.filename)
+        imagem.save('uploads/' + filename)
+        return 'Upload realizado com sucesso!'
 
 
 
@@ -12,7 +27,11 @@ def registration_user():
     '''
     implement finds to create forms
     '''
-    return render_template("registration-user.html")
+    form = UploadForm()
+    
+
+
+    return render_template("registration-user.html", form=form)
 
 @app.route('/create-user', methods= ['POST'])
 def create_user():
@@ -31,22 +50,37 @@ def create_user():
     address_number = request.form['address_number'], 
     district = request.form['district'], 
     city = request.form['city'], 
-    groupId = request.form['group'], 
+    #groupId = request.form['group'], trazer o id da celula 
+    groupId = 1, 
     isBatism = request.form['isBatism'], 
     email = request.form['email'], 
     password = request.form['password'], 
     password_confirme = request.form['password_confirme'], 
-    hash_foto = ...
 
-    # INSERT VALIDATION SERVICE METHODS
+    # validar confirmação de senha
+    validations = VRS(password, password_confirme )
+    is_Valid = validations.validate_confirmation_password()
+    if  is_Valid is False:
+        flash('A confirmação da senha não teve sucesso!')
+        return redirect('/') 
 
+    # encriptografar senha e reatribuir no password antes de salvar
 
+    passwordData = CPS(password)
+    password = passwordData.encrypt()
+    
+
+    form = UploadForm()
+    if form.validate_on_submit():
+        imagem = form.imagem.data
+        filename = secure_filename(imagem.filename)
+        imagem.save('static/uploads/' + filename)
+        hash_foto = filename
 
     user = User(first_name, last_name, office, mother_name, 
               tel_mother, dad_name, tel_dad, date_birth , 
                 date_member, telephone, address, address_number,
-                district, city, groupId, isBatism, email, password, hash_foto )
-
+                district, city, groupId, isBatism, email, password, hash_foto)
 
     db.session.add(user)
     db.session.commit()
@@ -67,39 +101,21 @@ def auth_user():
         'password': request.form['password'],
     }
 
-    data_find_user = _create_filter_find_user(data_user_to_auth)
+    # find no banco 
+    users: User = session.query(User).filter(User.email == data_user_to_auth['password']).all()
+    user_name = users.first_name
 
-    db = ELR()
-    try_data_user = db.find_one(index='user', body=data_find_user)
+    password = CPS(data_user_to_auth['password'])
+    avaliableHash =  password.encrypt() == data_user_to_auth['password']
 
-
-    if (try_data_user):
-        user_token = try_data_user['hits']['hits'][0]['_source']['password']
-        user_name  = try_data_user['hits']['hits'][0]['_source']['first_name']
-
-        password = CPS(data_user_to_auth['password'])
-        avaliableHash =  password.encrypt() == user_token  
-
-        if (avaliableHash == False):
-            flash("Usuário ou senha incorretos")
-            return redirect('/login')
-        else:
-            session['user_logger'] = user_token
-            return redirect('/plataform')
-    
-    else: 
+    if (avaliableHash == False):
+        flash("Usuário ou senha incorretos")
         return redirect('/login')
+    else:
+        session['user_logger'] = user_name
+        return redirect('/plataform')
+    
 
-
-
-def _create_filter_find_user(request_body: dict) -> dict:
-    return  {
-        "query": {
-            "query_string": {
-                "query": f"{request_body['email']}"
-            }
-        }
-    }
 
 
 @app.route('/logout')

@@ -17,7 +17,7 @@ class Church(db.Model):
     first_treasurer = db.Column(db.String(100))
     second_treasurer =db.Column(db.String(100))
 
-    def __init__(self, id, create_date,
+    def __init__(self, create_date,
                   church_name, cnpj,
                     president_name,
                     street_number,
@@ -350,6 +350,7 @@ class User(db.Model):
     isBatism = db.Column(db.String(100))
     email = db.Column(db.String(100))
     password = db.Column(db.String(100))
+    hash_foto =  db.Column(db.String(100))
    
 
     def __init__(self, first_name, last_name, office,
@@ -357,7 +358,7 @@ class User(db.Model):
                   tel_dad, date_birth, date_member, 
                   telephone, address, address_number, 
                   district, city, groupId, isBatism,
-                  email, password
+                  email, password, hash_foto
                     ):
          
         self.first_name = first_name
@@ -378,6 +379,7 @@ class User(db.Model):
         self.isBatism = isBatism
         self.email = email
         self.password = password
+        self.hash_foto = hash_foto 
 
     def __repr__(self):
         return '<Usuario %r>' % self.first_name  
