@@ -84,8 +84,6 @@ def create_user():
 
     db.session.add(user)
     db.session.commit()
-
-
     return redirect('/login')
 
 
@@ -102,11 +100,10 @@ def auth_user():
     }
 
     # find no banco 
-    users: User = session.query(User).filter(User.email == data_user_to_auth['password']).all()
-    user_name = users.first_name
-
+    user: User = db.session.query(User).filter(User.email == data_user_to_auth['email']).first()
+    user_name = user.first_name
     password = CPS(data_user_to_auth['password'])
-    avaliableHash =  password.encrypt() == data_user_to_auth['password']
+    avaliableHash =  password.encrypt() == user.password
 
     if (avaliableHash == False):
         flash("Usuário ou senha incorretos")

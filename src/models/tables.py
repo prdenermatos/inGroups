@@ -28,7 +28,7 @@ class Church(db.Model):
                     first_treasurer, 
                     second_treasurer
                     ):
-        self.id = id
+      
         self.create_date = create_date
         self.church_name = church_name
         self.cnpj = cnpj

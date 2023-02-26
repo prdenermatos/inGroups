@@ -29,6 +29,9 @@ class AuthGuardUser:
         self.password_decrypt = password_decrypt
     
 
+class Features:
+    create_edit_church = [1, 2, 3]
+        
 class AccessControl:
     def avaliable():        
         if 'user_logger' not in session or session['user_logger'] == None:
@@ -36,6 +39,10 @@ class AccessControl:
             return False
         else:
             return True
+    
+    def permission_role(feat: Features ) -> bool:
+        if session['roleId'] not in feat.create_edit_church:
+            flash('Você não tem permissão para acessar essa funcionalidade')
 
 
     
