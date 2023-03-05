@@ -4,6 +4,8 @@ from src.services.validation_register_user_services import AccessControl as ACL
 from src.services.church_service import CreateChurch, EditChurch
 from src.models.tables import Church
 
+ID_CHURCH = []
+
 @app.route('/menu-settings', methods = ['GET', 'POST'])
 def menu_settings():
     isPermit = ACL.avaliable()
@@ -19,10 +21,10 @@ def settigns_church():
     #if not isPermitonLogger and isFeatPermition :
     if not isPermitonLogger:
         return redirect('/')
-    
 
     data_church: Church = EditChurch().find_data()
-    print(data_church)
+    if data_church == None:
+        data_church = {'id': 0} 
 
     return render_template("settings-church.html", data = data_church)
 
@@ -30,6 +32,7 @@ def settigns_church():
 
 @app.route('/add-church', methods=['POST'])
 def create_settings_church():
+    id_church =  request.form['id']
     data_church = {
         'date_create': request.form['date'], 
         'church_name': request.form['church_name'],
@@ -44,10 +47,18 @@ def create_settings_church():
         'first_treasurer_name': request.form['first_treasurer_name'], 
         'second_treasurer_name': request.form['second_treasurer_name'] 
         }
+    print('--->', id_church)
 
-    if data_church:
+    if  int(id_church) == 0:
+        print('entrou na criação')
         CreateChurch(data_church).save()
         flash('Cadastro realizado com sucesso')
+
+    else:
+        print('entrou na edição')
+        
+        EditChurch().update_data(data_church, id_church)
+        flash('Cadastro atualizado com sucesso')
         
 
     return redirect('/menu-settings')
