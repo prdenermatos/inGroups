@@ -104,8 +104,7 @@
                         <div class="col-md-6">
                             <span style="font-size: small;">Data de Criação (Estatuto)</span>
                             <div class="input-group input-group-outline is-valid my-3">
-                                <label class="form-label"></label>
-                                <input type="date" name="date" class="form-control" required value="{{data.date}}">
+                                <input type="date" name="date" class="form-control" required value="{{date}}">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -138,10 +137,10 @@
                             <div class="input-group input-group-static mb-4">
                                 <select class="form-control" name="disctrict" id="exampleFormControlSelect1">
                                   <option>{{data.district}}</option>
-                                  <option>Elza Amui</option>
-                                  <option>Abadia</option>
-                                  <option>Centro</option>
-                                 
+                                  {% for district in districts %}
+                                    <option>{{ district }}</option>
+                                    {% endfor %}
+                        
                                 </select>
                             </div>
                         </div>
@@ -150,9 +149,10 @@
                             <div class="input-group input-group-static mb-4">
                                 <select class="form-control" name="city" id="exampleFormControlSelect1" >
                                   <option>{{data.city}}</option>
-                                  <option>Elza Amui</option>
-                                  <option>Abadia</option>
-                                  <option>Centro</option>
+                                  {% for city in cities %}
+                                  <option>{{ city }}</option>
+                                  {% endfor %}
+
                                  
                                 </select>
                             </div>

@@ -3,6 +3,7 @@ from src import app
 from src.services.validation_register_user_services import AccessControl as ACL
 from src.services.church_service import CreateChurch, EditChurch
 from src.models.tables import Church
+from src.common.locations import Locations
 
 
 @app.route('/menu-settings', methods = ['GET', 'POST'])
@@ -21,10 +22,13 @@ def settigns_church():
         return redirect('/')
 
     data_church: Church = EditChurch().find_data()
+    date = str(data_church.create_date)
+    cities = [Locations.city['name']]
+    districts = Locations.city['districts']
     if data_church == None:
         data_church = {'id': 0} 
 
-    return render_template("settings-church.html", data = data_church)
+    return render_template("settings-church.html", data = data_church, date= date, cities=cities, districts=districts )
 
 
 @app.route('/add-church', methods=['POST'])
