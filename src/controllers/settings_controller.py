@@ -4,7 +4,6 @@ from src.services.validation_register_user_services import AccessControl as ACL
 from src.services.church_service import CreateChurch, EditChurch
 from src.models.tables import Church
 
-ID_CHURCH = []
 
 @app.route('/menu-settings', methods = ['GET', 'POST'])
 def menu_settings():
@@ -17,8 +16,7 @@ def menu_settings():
 @app.route('/settings-church', methods = ['GET', 'POST'])
 def settigns_church():
     isPermitonLogger = ACL.avaliable()
-    #isFeatPermition = ACL.permission_role()
-    #if not isPermitonLogger and isFeatPermition :
+   
     if not isPermitonLogger:
         return redirect('/')
 
@@ -28,7 +26,6 @@ def settigns_church():
 
     return render_template("settings-church.html", data = data_church)
 
-#ADD endpoints para o CRUD
 
 @app.route('/add-church', methods=['POST'])
 def create_settings_church():
@@ -47,7 +44,6 @@ def create_settings_church():
         'first_treasurer_name': request.form['first_treasurer_name'], 
         'second_treasurer_name': request.form['second_treasurer_name'] 
         }
-    print('--->', id_church)
 
     if  int(id_church) == 0:
         print('entrou na criação')
