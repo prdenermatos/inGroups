@@ -2,7 +2,8 @@ from flask import render_template, redirect, request, flash
 from src import app
 from src.services.validation_register_user_services import AccessControl as ACL
 from src.services.church_service import CreateChurch, EditChurch
-from src.models.tables import Church
+from src.services.group_service import CreateGroup, GroupType, UpdateGroup
+from src.models.tables import User, Sector, Church, Group
 from src.common.locations import Locations
 
 
@@ -67,12 +68,73 @@ def create_settings_church():
 
 @app.route('/settings-groups', methods = ['GET', 'POST'])
 def settings_groups(): 
-    return render_template("settings-groups.html")
+    isPermit = ACL.avaliable()
+    if not isPermit:
+        return redirect('/')
+
+    data = {'id': 0}
+    cities = [Locations.city['name']]
+    districts = Locations.city['districts']
+    data_users = User.query.all()
+    sectors = Sector.query.all()
+
+    print('-->', data_users)
+    print('sec--->', sectors)
+    if data_users and len(data_users) == 0: 
+        data_users = [{'id': 0}] 
+    if sectors and len(sectors) == 0:
+        sectors = { 'id': 0}
+    
+
+    return render_template("settings-groups.html", cities=cities, districts = districts, data_users=data_users, data=data)
+
+
+# add crud
+@app.route('/add-group', methods=['GET', 'POST', 'UPDATE'])
+def add_group():
+    group_id = int(request.form['id'])
+    print('veio id?', group_id)
+
+    group = Group(
+        request.form['create_date'],
+        request.form['group_name'],
+        request.form['leader_name'],
+        request.form['vice_leader_name'],
+        request.form['street_number'],
+        request.form['district'],
+        request.form['city'],
+        request.form['sectorId'],
+        request.form['host_name'],
+        request.form['meeting_day'],
+        request.form['meeting_time'],
+        request.form['enabled'],
+    )
+
+    if group_id == 0 :
+        CreateGroup(group).save()
+        flash('Cadastro criado com sucesso')
+        return render_template('list-groups.html')
+
+    else:
+        UpdateGroup(group, group_id).update()
+        flash('Cadastro atualizado com sucesso')
+        return render_template('list-groups.html')
+        
+   
+
+
 
 
 @app.route('/list-groups', methods = ['GET', 'POST'])
 def list_groups():
+    # lista todas as células
     return render_template('list-groups.html')
+
+
+@app.route('/update-group', methods=['POST'])
+def update_group():
+    #pegar o id da iteração com input hiden ou na url
+    ...
 
 @app.route('/settings-cults', methods = ['GET', 'POST'])
 def settings_cults(): 

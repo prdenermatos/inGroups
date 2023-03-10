@@ -101,30 +101,31 @@
             </div>
             
             <div class="p-4 bg-light">
-                <form  action="#" method="post">
+                <form  action="/add-group" method="post">
+                    <input type="hidden" name="id" value="{{ data.id  }}">
                     <div class="row">
                         <span>Data de Criação </span>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
                                 <label class="form-label"></label>
-                                <input type="date" name="date" class="form-control" required>
+                                <input type="date" name="create_date" class="form-control" required>
                             </div>
                         </div>
                         
+                        <span>Nome da Célula </span>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
-                                <label class="form-label">Nome da Célula</label>
-                                <input type="text" name="total_members" class="form-control" required>
+                                <input type="text" name="group_name" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-static mb-4">
                                 <label for="exampleFormControlSelect1" class="ms-0">Líder </label>
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select class="form-control" name="leader_name" id="exampleFormControlSelect1">
                                   <option></option>
-                                  <option>Leonardo Viana</option>
-                                  <option>Michele Viana</option>
-                                  <option>Daniela Cardoso</option>
+                                  {% for user in data_users %}
+                                    <option>{{user.first_name}} </option>                                
+                                  {% endfor %}
                                  
                                 </select>
                             </div>
@@ -132,30 +133,29 @@
                         <div class="col-md-6">
                             <div class="input-group input-group-static mb-4">
                                 <label for="exampleFormControlSelect1" class="ms-0">Vice-Líder </label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option></option>
-                                  <option>Leonardo Viana</option>
-                                  <option>Michele Viana</option>
-                                  <option>Daniela Cardoso</option>
-                                 
+                                <select class="form-control" name="vice_leader_name" id="exampleFormControlSelect1">
+                                    <option></option>
+                                    {% for user in data_users %}
+                                      <option>{{user.first_name}} </option>                                
+                                    {% endfor %}
+
                                 </select>
                             </div>
                         </div>
-
+                        <span>Rua e Número</span>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
-                                <label class="form-label">Rua e Número</label>
-                                <input type="text" name="total_celebration" class="form-control" required>
+                                <input type="text" name="street_number" class="form-control" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-static mb-4">
                                 <label for="exampleFormControlSelect1" class="ms-0">Bairro:</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option></option>
-                                  <option>Elza Amui</option>
-                                  <option>Abadia</option>
-                                  <option>Centro</option>
+                                <select class="form-control" name="district" id="exampleFormControlSelect1">
+                                    <option></option>
+                                  {% for district in districts %}
+                                    <option>{{ district }}</option>
+                                    {% endfor %}
                                  
                                 </select>
                             </div>
@@ -163,11 +163,12 @@
                         <div class="col-md-6">
                             <div class="input-group input-group-static mb-4">
                                 <label for="exampleFormControlSelect1" class="ms-0">Cidade:</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option></option>
-                                  <option>Elza Amui</option>
-                                  <option>Abadia</option>
-                                  <option>Centro</option>
+                                <select class="form-control" name="city" id="exampleFormControlSelect1">
+                                    <option></option>
+                                    {% for city in cities %}
+                                    <option>{{ city }}</option>
+                                    {% endfor %}
+  
                                  
                                 </select>
                             </div>
@@ -175,11 +176,10 @@
                         <div class="col-md-6">
                             <div class="input-group input-group-static mb-4">
                                 <label for="exampleFormControlSelect1" class="ms-0">Setor:</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select class="form-control" name="sectorId" id="exampleFormControlSelect1">
                                   <option></option>
-                                  <option>Vermelho</option>
-                                  <option>Azul</option>
-                                  <option>Amarelo</option>
+                                  <option value="1">Vermelho</option>
+                                  <option value="2">Azul</option>
                                  
                                 </select>
                             </div>
@@ -187,31 +187,40 @@
                         <div class="col-md-6">
                             <div class="input-group input-group-static mb-4">
                                 <label for="exampleFormControlSelect1" class="ms-0">Anfitrião</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                  <option></option>
-                                  <option>João José</option>
-                                  <option>Gustavo Tosta</option>
-                                  <option>Amaraldo Fulano</option>
+                                <select class="form-control" name="host_name" id="exampleFormControlSelect1">
+                                    <option></option>
+                                    {% for user in data_users %}
+                                      <option>{{user.first_name}} Viana</option>                                
+                                    {% endfor %}
                                  
                                 </select>
                             </div>
                         </div>
                         
+                        <span>Dia de Reunião (dia da semana)</span>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
-                                <label class="form-label">Dia de Reunião (dia da semana)</label>
-                                <input type="text" name="total_cash" class="form-control" required>
+                                <select class="form-control" name="meeting_day" id="exampleFormControlSelect1">
+                                    <option></option>
+                                    <option>Segunda</option>
+                                    <option>Terça</option>
+                                    <option>Querta</option>
+                                    <option>Quinta</option>
+                                    <option>Sexta</option>
+                                    <option>Sábado</option>
+                                    <option>Domingo</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
                                 <label class="form-label">Horário da Célula </label>
-                                <input type="time" name="total_cash" class="form-control" required>
+                                <input type="time" name="meeting_time" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked="">
+                            <input class="form-check-input" type="checkbox" name="enabled" id="flexSwitchCheckDefault" checked="" value="1">
                             <label class="form-check-label" for="flexSwitchCheckDefault">Célula Ativa</label>
                         </div>
                                     

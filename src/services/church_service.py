@@ -29,10 +29,7 @@ class EditChurch:
         pass
     def find_data(self):
         return Church.query.first()
-    def update_data(self, data_update: dict, id_church: int):
-
-        print('chegou', id_church)
-     
+    def update_data(self, data_update: dict, id_church: int):     
         stmt = update(Church).where(Church.id == id_church).values(
             create_date = data_update['date_create'], 
             church_name= data_update['church_name'],
@@ -50,16 +47,6 @@ class EditChurch:
         
         db.session.execute(stmt)
         db.session.commit()
-
-        print('atualizou')
-
-
-
-        # updater = update(Church)
-        # value = updater.values(data_update)
-        # contitions = value.where(Church.id == id_church)
-        # db.execute(contitions)
-
 
 
         

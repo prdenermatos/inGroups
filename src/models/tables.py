@@ -221,10 +221,9 @@ class Group(db.Model):
     meeting_time = db.Column(db.String(100))
     enabled = db.Column(db.Integer)
 
-    def __init__(self, id, create_date, group_name, leader_name, vice_leader_name, street_number,
+    def __init__(self, create_date, group_name, leader_name, vice_leader_name, street_number,
                   district, city, sectorId, host_name, meeting_day, meeting_time,  enabled ):
         
-        self.id = id
         self.create_date = create_date
         self.group_name = group_name
         self.leader_name = leader_name
