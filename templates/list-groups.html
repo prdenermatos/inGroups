@@ -100,33 +100,45 @@
                 <span><i class="material-icons">keyboard_double_arrow_left</i><a href="/settings-groups" >Voltar</a></span>
             </div>
 
-        
+            {% for group in groups %}
             <div class="card" data-animation="true" style="background-color: rgb(255, 255, 255);" >
                 
                 <div class="card-body text-center d-flex p-2" style="flex-direction: column;">
                     <h5 class="font-weight-normal mt-3 d-inline-flex p-2">
-                        <a href="#;"><strong style="color: rgb(0, 0, 0);  padding: 0% !important;">Vencedores em Cristo</strong>  </a>
+                        <a href="#;"><strong style="color: rgb(0, 0, 0);  padding: 0% !important;">{{ group.group_name }}</strong>  </a>
                     </h5>
-                    <span class="mb-0 d-inline-flex p-2" style="color: rgb(0, 0, 0); font-size: small; padding: 0% !important;"> <strong>Criação: 20/03/2023</strong>
+                    <span class="mb-0 d-inline-flex p-2" style="color: rgb(0, 0, 0); font-size: small; padding: 0% !important;"> <strong>Data Criação: {{ group.create_date }}</strong>
                     </span>
-                    <span class="mb-0 d-inline-flex p-2" style="color: rgb(0, 0, 0); font-size: small; padding: 0% !important;"> <strong>Lider: Henrique</strong>
+
+                    <span class="mb-0 d-inline-flex p-2" style="color: rgb(0, 0, 0); font-size: small; padding: 0% !important;"> <strong>Líder: {{ group.leader_name }}</strong>
                     </span>
-                    <span class="mb-0 d-inline-flex p-2" style="color: rgb(0, 0, 0); font-size: small; padding: 0% !important; "> <strong>Vice-Lider: Julia</strong>
+
+                    <span class="mb-0 d-inline-flex p-2" style="color: rgb(0, 0, 0); font-size: small; padding: 0% !important; "> <strong>Vice: {{ group.vice_leader_name }}</strong>
                     </span>
-                    <span class="mb-0 d-inline-flex p-2" style="color: rgb(0, 0, 0); font-size: small; padding: 0% !important; "> <strong>Bairro: Abadia</strong>
+
+                    <span class="mb-0 d-inline-flex p-2" style="color: rgb(0, 0, 0); font-size: small; padding: 0% !important; "> <strong>Endereço: {{ group.street_number }}</strong>
                     </span>
-                    <span class="mb-0 d-inline-flex p-2" style="color: rgb(0, 0, 0); font-size: small; padding: 0% !important; "> <strong>Dia Reunião: Quinta-feira</strong>
+
+                    
+                    <span class="mb-0 d-inline-flex p-2" style="color: rgb(0, 0, 0); font-size: small; padding: 0% !important; "> <strong>Bairro: {{ group.district }}</strong>
                     </span>
-                    <span class="mb-0 d-inline-flex p-2" style="color: rgb(0, 0, 0); font-size: small; padding: 0% !important; "> <strong>Horário Reunião: 19:30</strong>
+
+                    <span class="mb-0 d-inline-flex p-2" style="color: rgb(0, 0, 0); font-size: small; padding: 0% !important; "> <strong>Dia Reunião: {{ group.meeting_day }}</strong>
                     </span>
-                    <span class="mb-0 d-inline-flex p-2" style="color: rgb(0, 0, 0); font-size: small; padding: 0% !important; "> <strong>Anfitrião: Valdeci</strong>
+
+                    <span class="mb-0 d-inline-flex p-2" style="color: rgb(0, 0, 0); font-size: small; padding: 0% !important; "> <strong>Horário Reunião: {{ group.meeting_time }}</strong>
                     </span>
+
+                    <span class="mb-0 d-inline-flex p-2" style="color: rgb(0, 0, 0); font-size: small; padding: 0% !important; "> <strong>Anfitrião: {{ group.host_name }}</strong>
+                    </span>
+
                     <div>
-                        <span><i class="material-icons">edit</i><a href="#" >Editar</a></span>
+                        <span><i class="material-icons">edit</i><a href="/" >Editar</a></span>
                     </div>
                 </div>
             </div>
             <br>
+            {% endfor %}
 
             
 

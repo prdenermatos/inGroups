@@ -72,7 +72,7 @@ def settings_groups():
     if not isPermit:
         return redirect('/')
 
-    data = {'id': 0}
+    data = {'id': 0} #será alterado quando chamado a partir da listagem das células
     cities = [Locations.city['name']]
     districts = Locations.city['districts']
     data_users = User.query.all()
@@ -89,7 +89,6 @@ def settings_groups():
     return render_template("settings-groups.html", cities=cities, districts = districts, data_users=data_users, data=data)
 
 
-# add crud
 @app.route('/add-group', methods=['GET', 'POST', 'UPDATE'])
 def add_group():
     group_id = int(request.form['id'])
@@ -113,12 +112,12 @@ def add_group():
     if group_id == 0 :
         CreateGroup(group).save()
         flash('Cadastro criado com sucesso')
-        return render_template('list-groups.html')
+        return redirect('/list-groups')
 
     else:
         UpdateGroup(group, group_id).update()
         flash('Cadastro atualizado com sucesso')
-        return render_template('list-groups.html')
+        return redirect('/list-groups')
         
    
 
@@ -128,7 +127,9 @@ def add_group():
 @app.route('/list-groups', methods = ['GET', 'POST'])
 def list_groups():
     # lista todas as células
-    return render_template('list-groups.html')
+    groups = Group.query.order_by(Group.create_date.desc()).all()
+
+    return render_template('list-groups.html', groups=groups)
 
 
 @app.route('/update-group', methods=['POST'])
