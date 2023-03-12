@@ -2,10 +2,12 @@ from flask import render_template, redirect, request, flash
 from src import app
 from src.services.validation_register_user_services import AccessControl as ACL
 from src.services.church_service import CreateChurch, EditChurch
-from src.services.group_service import CreateGroup, GroupType, UpdateGroup
+from src.services.group_service import CreateGroup, GroupType, UpdateGroup, FindGroup
 from src.models.tables import User, Sector, Church, Group
 from src.common.locations import Locations
 
+
+GROUP_ID = []
 
 @app.route('/menu-settings', methods = ['GET', 'POST'])
 def menu_settings():
@@ -72,21 +74,25 @@ def settings_groups():
     if not isPermit:
         return redirect('/')
 
-    data = {'id': 0} #será alterado quando chamado a partir da listagem das células
+    group_id = {'id': 0}
+    if len(GROUP_ID) > 0:
+        group_id['id'] = GROUP_ID[0]
+        GROUP_ID.clear()
+
+        
     cities = [Locations.city['name']]
     districts = Locations.city['districts']
     data_users = User.query.all()
     sectors = Sector.query.all()
+    data_group =  Group.query.filter(Group.id == group_id['id']) .first()
 
-    print('-->', data_users)
-    print('sec--->', sectors)
     if data_users and len(data_users) == 0: 
         data_users = [{'id': 0}] 
     if sectors and len(sectors) == 0:
         sectors = { 'id': 0}
     
 
-    return render_template("settings-groups.html", cities=cities, districts = districts, data_users=data_users, data=data)
+    return render_template("settings-groups.html", cities=cities, districts = districts, data_users=data_users, data=group_id, group=data_group)
 
 
 @app.route('/add-group', methods=['GET', 'POST', 'UPDATE'])
@@ -126,14 +132,16 @@ def add_group():
 
 @app.route('/list-groups', methods = ['GET', 'POST'])
 def list_groups():
-    # lista todas as células
     groups = Group.query.order_by(Group.create_date.desc()).all()
+    count_groups = len(groups)
+    return render_template('list-groups.html', groups=groups, count_groups=count_groups)
 
-    return render_template('list-groups.html', groups=groups)
 
-
-@app.route('/update-group', methods=['POST'])
-def update_group():
+@app.route('/update-group/<int:id>', methods=['POST', 'GET'])
+def update_group(id):
+    if id:
+        GROUP_ID.append(id)
+        return redirect("/settings-groups")
     #pegar o id da iteração com input hiden ou na url
     ...
 

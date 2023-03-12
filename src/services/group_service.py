@@ -1,6 +1,7 @@
 from src import db
 from src.models.tables import Group
-from sqlalchemy import update
+from sqlalchemy import update, func
+
 
 class GroupType(Group):
     ...
@@ -53,3 +54,15 @@ class UpdateGroup:
          )
         db.session.execute(stmt)
         db.session.commit()
+    
+
+class FindGroup:
+    def __init__(self) -> None:
+        ...
+    def count_groups(self):
+        ...
+    ## verificar e testar
+    
+
+
+
