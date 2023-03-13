@@ -84,7 +84,13 @@ def settings_groups():
     districts = Locations.city['districts']
     data_users = User.query.all()
     sectors = Sector.query.all()
-    data_group =  Group.query.filter(Group.id == group_id['id']) .first()
+    data_group: Group =  Group.query.filter(Group.id == group_id['id']) .first()
+    sector_name = ''
+    sector_id_current = ''
+    if data_group:
+        sector_by_id: Sector = Sector.query.filter(Sector.id == data_group.sectorId).first()
+        sector_name = sector_by_id.sector_name
+        sector_id_current = sector_by_id.id
 
     if data_users and len(data_users) == 0: 
         data_users = [{'id': 0}] 
@@ -92,13 +98,12 @@ def settings_groups():
         sectors = { 'id': 0}
     
 
-    return render_template("settings-groups.html", cities=cities, districts = districts, data_users=data_users, data=group_id, group=data_group)
+    return render_template("settings-groups.html", cities=cities, districts = districts, data_users=data_users, data=group_id, group=data_group, sector_name = sector_name, sectors = sectors, sector_id_current = sector_id_current)
 
 
 @app.route('/add-group', methods=['GET', 'POST', 'UPDATE'])
 def add_group():
     group_id = int(request.form['id'])
-    print('veio id?', group_id)
 
     group = Group(
         request.form['create_date'],
@@ -122,7 +127,7 @@ def add_group():
 
     else:
         UpdateGroup(group, group_id).update()
-        flash('Cadastro atualizado com sucesso')
+        flash('Atualizado com sucesso')
         return redirect('/list-groups')
         
    

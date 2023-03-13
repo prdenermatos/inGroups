@@ -49,9 +49,29 @@ class UpdateGroup:
         return Group.query.get(self.group_id)
 
     def update(self):
-        stmt = update(Group).where(Group.id ==  self.group_id).values(
-              self.data
+        print('test-->',self.group_id )
+        stmt = update(Group).where(Group.id == self.group_id).values(
+               create_date=  self.data.create_date, 
+                group_name = self.data.group_name, 
+               leader_name =  self.data.leader_name, 
+               vice_leader_name =  self.data.vice_leader_name, 
+               street_number = self.data.street_number,
+                district = self.data.district,
+                city = self.data.city,
+                sectorId = self.data.sectorId, 
+                host_name = self.data.host_name, 
+                meeting_day = self.data.meeting_day, 
+                meeting_time = self.data.meeting_time, 
+                enabled =  self.data.enabled
          )
+        
+        
+        
+
+
+
+
+        
         db.session.execute(stmt)
         db.session.commit()
     

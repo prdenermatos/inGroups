@@ -176,10 +176,11 @@
                         <div class="col-md-6">
                             <div class="input-group input-group-static mb-4">
                                 <label for="exampleFormControlSelect1" class="ms-0">Setor:</label>
-                                <select class="form-control" name="sectorId" id="exampleFormControlSelect1">
-                                  <option></option>
-                                  <option value="1">Vermelho</option>
-                                  <option value="2">Azul</option>
+                                <select class="form-control" name="sectorId" id="exampleFormControlSelect1" required>
+                                  <option value="{{sector_id_current}}">{{ sector_name }}</option>
+                                  {% for sector in sectors %}
+                                  <option value="{{sector.id}}">{{ sector.sector_name }}</option>
+                                  {% endfor %}
                                  
                                 </select>
                             </div>
@@ -187,8 +188,8 @@
                         <div class="col-md-6">
                             <div class="input-group input-group-static mb-4">
                                 <label for="exampleFormControlSelect1" class="ms-0">Anfitrião</label>
-                                <select class="form-control" name="host_name" id="exampleFormControlSelect1">
-                                    <option></option>
+                                <select class="form-control" name="host_name" id="exampleFormControlSelect1" required>
+                                    <option>{{ group.host_name }}</option>
                                     {% for user in data_users %}
                                       <option>{{user.first_name}} </option>                                
                                     {% endfor %}
@@ -200,8 +201,8 @@
                         <span>Dia de Reunião (dia da semana)</span>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
-                                <select class="form-control" name="meeting_day" id="exampleFormControlSelect1">
-                                    <option></option>
+                                <select class="form-control" name="meeting_day" id="exampleFormControlSelect1" required>
+                                    <option>{{ group.meeting_day }}</option>
                                     <option>Segunda</option>
                                     <option>Terça</option>
                                     <option>Querta</option>
@@ -212,10 +213,10 @@
                                 </select>
                             </div>
                         </div>
+                        <span>Horário da Célula </span>
                         <div class="col-md-6">
                             <div class="input-group input-group-outline is-valid my-3">
-                                <label class="form-label">Horário da Célula </label>
-                                <input type="time" name="meeting_time" class="form-control" required>
+                                <input type="time" name="meeting_time" class="form-control" required value="{{group.meeting_time}}">
                             </div>
                         </div>
 
